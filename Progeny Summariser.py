@@ -47,7 +47,7 @@ if((x <= 26)):
             newgamete.append(gamete[k] + gamete[l])
     for f in newgamete:
         l6.append(list(f))
-    '''printchoice = int(input("Enter 1 to see all offsprings, else Enter 2 to skip to summary: "))
+    printchoice = int(input("Enter 1 to see all offsprings, else Enter 2 to skip to summary: "))
     print(' ')
     if printchoice==1:
         interfaceinput = int(input("Which Interface would you want? For line by line, enter 1 and for single line, enter 2 :- "))
@@ -63,7 +63,7 @@ if((x <= 26)):
                 ele = sorted(ele, key = lambda u: u.lower())
                 ele = [''.join(ele)]
                 print(str(ele[0]), end = " ")
-            print("\n")'''
+            print("\n")
     print("Offsprings are", len(newgamete), "in number")
     for element in newgamete:
         l2.append(list(element))
