@@ -7,6 +7,7 @@ from colorama import init
 from termcolor import cprint 
 from pyfiglet import figlet_format
 import sys
+import matplotlib.pyplot as plt
 alphabets = list(string.ascii_lowercase)
 capalphabets = list(string.ascii_uppercase)
 y = []
@@ -23,6 +24,7 @@ l5 = []
 l6 = []
 lghjk = []
 perc = []
+percint = []
 init(strip=not sys.stdout.isatty())
 cprint(figlet_format('Progeny Summary', font='epic'),'red', attrs=['bold'])
 x = int(input("Enter Number of Traits :- "))
@@ -45,7 +47,7 @@ if((x <= 26)):
             newgamete.append(gamete[k] + gamete[l])
     for f in newgamete:
         l6.append(list(f))
-    printchoice = int(input("Enter 1 to see all offsprings, else Enter 2 to skip to summary: "))
+    '''printchoice = int(input("Enter 1 to see all offsprings, else Enter 2 to skip to summary: "))
     print(' ')
     if printchoice==1:
         interfaceinput = int(input("Which Interface would you want? For line by line, enter 1 and for single line, enter 2 :- "))
@@ -61,7 +63,7 @@ if((x <= 26)):
                 ele = sorted(ele, key = lambda u: u.lower())
                 ele = [''.join(ele)]
                 print(str(ele[0]), end = " ")
-            print("\n")
+            print("\n")'''
     print("Offsprings are", len(newgamete), "in number")
     for element in newgamete:
         l2.append(list(element))
@@ -81,6 +83,7 @@ if((x <= 26)):
     for i in occ:
         c = int(i)
         percc = (c*100)/no
+        percint.append(percc)
         perc.append(str(percc)+'%')
     Output = pandas.DataFrame(data ={'Genotype': lghjk, 'Occurence': occ, 'Percentage': perc}, index = list(indexlist))
     pandas.set_option( "display.max_rows", None, "display.max_columns", None) 
@@ -93,6 +96,12 @@ if((x <= 26)):
     print(Output)
     print("Genotypic Ratio is")
     print(s)
+    plt.bar(lghjk, percint)
+    plt.plot(lghjk, percint)
+    plt.xlabel('Genotype')
+    plt.ylabel('Percentage')
+    plt.grid(True)
+    plt.show()
 else:
     print("Not possible in this program due to availability of only 26 alphabets")
 end = input("Enter Anything to End")
